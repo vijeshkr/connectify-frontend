@@ -26,7 +26,9 @@ function App() {
         <Navbar/>
         <div className='flex'>
           <LeftBar/>
+          <div className='flex-6'>
           <Outlet/>
+          </div>
           <RightBar/>
         </div>
       </div>

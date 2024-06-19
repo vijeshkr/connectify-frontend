@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <div className='flex items-center justify-between px-5 py-3 h-14 border-b '>
+    <div className='flex items-center justify-between px-5 py-3 h-14 border-b sticky top-0 bg-white '>
       {/* Leftside of navbar */}
       <div className='flex items-center gap-7'>
         <Link to='/'>
