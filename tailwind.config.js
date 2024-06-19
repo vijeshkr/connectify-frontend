@@ -7,9 +7,12 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'login-bg': "url('./src/assets/images/login.jpg')",
+        // Custom background images for login and register cards
+        'login-bg': "url('./assets/images/login.jpg')",
+        'register-bg': "url('./assets/images/register.jpg')",
       },
       colors: {
+        // Custom colors for login and register gradient
         'sky-50': 'rgba(125 211, 252, 0.5)',
         'sky-20': 'rgba(125, 211, 252, 0.2)', 
       },
