@@ -22,7 +22,7 @@ function App() {
   // Layout component to structure the main layout with Navbar, LeftBar, RighBar and dynamic content via Outlet
   const Layout = () =>{
     return(
-      <div>
+      <div className='bg-gray-100'>
         <Navbar/>
         <div className='flex'>
           <LeftBar/>

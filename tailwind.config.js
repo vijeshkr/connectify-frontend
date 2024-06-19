@@ -13,7 +13,7 @@ export default {
       },
       colors: {
         // Custom colors for login and register gradient
-        'sky-50': 'rgba(125 211, 252, 0.5)',
+        'sky-50': 'rgba(125, 211, 252, 0.5)',
         'sky-20': 'rgba(125, 211, 252, 0.2)', 
       },
       // Flex division home page
@@ -24,6 +24,9 @@ export default {
       },
       height: {
         'h-calc': 'calc(100vh - 50px)'
+      },
+      boxShadow: {
+        'custom': '-3px 1px 25px -14px rgba(0,0,0,0.75)',
       },
     },
   },

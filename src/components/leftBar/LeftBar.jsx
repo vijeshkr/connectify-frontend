@@ -15,7 +15,7 @@ import Courses from '@mui/icons-material/MenuBookOutlined';
 
 const LeftBar = () => {
   return (
-    <div className='flex-2 sticky top-16 h-h-calc overflow-scroll no-scrollbar '>
+    <div className='flex-2 sticky top-14 h-h-calc overflow-scroll no-scrollbar bg-white '>
       {/* Container for the leftbar */}
       <div className='p-5'>
         {/* Section one */}
