@@ -13,7 +13,11 @@ const Post = ({ post }) => {
     const [commentOpen, setCommentOpen] = useState(false);
 
     // Temporary
-    const liked = false;
+    const [liked, setLiked] = useState(false);
+
+    const toggleLiked = () => {
+        setLiked(!liked);
+    };
 
     return (
         <div className='shadow-custom bg-white rounded-lg'>
@@ -40,7 +44,7 @@ const Post = ({ post }) => {
                 {/* Likes div */}
                 <div className="flex items-center gap-5 text-sm">
                     <div className='flex gap-2 cursor-pointer'>
-                        {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
+                        {liked ? <FavoriteOutlinedIcon className='text-red-600' onClick={ toggleLiked } /> : <FavoriteBorderOutlinedIcon onClick={ toggleLiked } />}
                         <p>12 Likes</p>
                     </div>
                     <div className=" flex gap-2 cursor-pointer" onClick={() => setCommentOpen(!commentOpen)}>

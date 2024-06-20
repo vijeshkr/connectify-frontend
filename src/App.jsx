@@ -12,12 +12,14 @@ import LeftBar from './components/leftBar/LeftBar';
 import RightBar from './components/rightBar/RightBar';
 import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile'
+import { useContext } from 'react';
+import { AuthContext } from './context/authContext';
 
 function App() {
 
-  // Logged in or not boolean variable
+  // Login contextApi
 
-  let currentUser = true;
+  const { currentUser } = useContext(AuthContext);
 
   // Layout component to structure the main layout with Navbar, LeftBar, RighBar and dynamic content via Outlet
   const Layout = () =>{

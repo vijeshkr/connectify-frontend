@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Friends from '@mui/icons-material/PeopleAltOutlined';
 import Groups from '@mui/icons-material/GroupsOutlined';
 import Market from '@mui/icons-material/StorefrontOutlined';
@@ -12,8 +12,11 @@ import Messages from '@mui/icons-material/MailOutlineOutlined';
 import Fund from '@mui/icons-material/SavingsOutlined';
 import Tutorials from '@mui/icons-material/LibraryBooksOutlined';
 import Courses from '@mui/icons-material/MenuBookOutlined';
+import { AuthContext } from '../../context/authContext';
 
 const LeftBar = () => {
+
+  const { currentUser } = useContext(AuthContext);
   return (
     <div className='flex-2 sticky top-14 h-h-calc overflow-scroll no-scrollbar bg-white '>
       {/* Container for the leftbar */}
@@ -21,8 +24,8 @@ const LeftBar = () => {
         {/* Section one */}
         <div className='flex flex-col gap-5'>
         <div className='flex items-center gap-3'>
-          <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="" className='w-8 h-8 rounded-full object-cover' />
-          <span>Vijesh KR</span>
+          <img src={currentUser.profilePic} alt="" className='w-8 h-8 rounded-full object-cover' />
+          <span>{currentUser.name}</span>
         </div>
         <div className='flex items-center gap-3'>
           <Friends style={{ fontSize: '30px' }} />

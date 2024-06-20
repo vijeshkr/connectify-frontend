@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Brightness3OutlinedIcon from '@mui/icons-material/Brightness3Outlined';
 import Brightness4OutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
@@ -8,8 +8,12 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/authContext';
 
 const Navbar = () => {
+
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className='flex items-center justify-between px-5 py-3 h-14 border-b sticky top-0 bg-white z-10'>
       {/* Leftside of navbar */}
@@ -33,8 +37,8 @@ const Navbar = () => {
         <NotificationsNoneOutlinedIcon/>
         {/* Container div for profile image and profile name */}
         <div className='flex items-center gap-3'>
-          <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="" className='w-8 h-8 rounded-full object-cover' />
-          <span>Vijesh KR</span>
+          <img src={currentUser.profilePic} alt="" className='w-8 h-8 rounded-full object-cover' />
+          <span>{currentUser.name}</span>
         </div>
       </div>
     </div>

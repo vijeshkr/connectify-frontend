@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../context/authContext'
 
 // Login component for user authentication
 const Login = () => {
+
+        const { login } = useContext(AuthContext);
+
+        const handleLogin = () => {
+            login();
+        };
+
   return (
     <div className='h-screen bg-sky-300 flex items-center justify-center p-7 sm:p-4'>
         <div className="flex flex-wrap bg-white rounded-xl h-3/4 w-full sm:w-5/6 md:w-4/6 lg:w-4/6 overflow-hidden">
@@ -30,7 +38,7 @@ const Login = () => {
                 <form className='flex flex-col gap-4 sm:gap-7 items-start' >
                     <input type="text" placeholder='Username' className='border-b py-2 px-2 w-full outline-none'/>
                     <input type="password" placeholder='Password' className='border-b py-2 px-2 w-full outline-none' />
-                    <button className='text-base w-full sm:w-1/2 py-2 hover:border hover:border-sky-600 bg-sky-600 text-white hover:bg-white hover:text-sky-600 transition rounded-md font-bold cursor-pointer'>Login</button>
+                    <button onClick={handleLogin} className='text-base w-full sm:w-1/2 py-2 hover:border hover:border-sky-600 bg-sky-600 text-white hover:bg-white hover:text-sky-600 transition rounded-md font-bold cursor-pointer'>Login</button>
                 </form>
             </div>
         </div>
