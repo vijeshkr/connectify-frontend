@@ -23,7 +23,10 @@ export default {
         '3': '3 3 0%',
       },
       height: {
-        'h-calc': 'calc(100vh - 50px)'
+        'h-calc': 'calc(100vh - 50px)',
+      },
+      maxHeight: {
+        'custom-500': '500px',
       },
       boxShadow: {
         'custom': '-3px 1px 25px -14px rgba(0,0,0,0.75)',

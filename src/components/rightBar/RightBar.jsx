@@ -12,7 +12,7 @@ const RightBar = () => {
             {/* User info */}
             <div className='flex items-center gap-2'>
               <img className='w-10 h-10 rounded-full object-cover' src="https://blenderartists.org/uploads/default/original/4X/d/f/0/df06f3195773fc73f2ad4668d16bdfff4afff191.jpeg" alt="" />
-              <span className='font-medium text-xs'>Deamon Targaryen</span>
+              <span className='font-medium text-xs'>Daemon Targaryen</span>
             </div>
             <div className='flex items-center gap-3'>
               <button className='py-1 px-3 rounded-lg text-white text-xs bg-blue-600 cursor-pointer'>follow</button>

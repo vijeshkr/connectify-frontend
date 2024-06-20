@@ -35,7 +35,7 @@ const Stories = () => {
                 <button className='h-8 w-8 pb-2 flex justify-center items-center rounded-full absolute bottom-9 left-2 bg-blue-600 text-white font-bold cursor-pointer'><span className='text-3xl'>+</span></button>
             </div>
         {stories.map((story)=>(
-            <div className='flex-1 overflow-hidden object-cover relative'>
+            <div className='flex-1 overflow-hidden object-cover relative' key={story.id}>
                 <img className='w-32 h-full rounded-xl' src={story.img} alt="" />
                 <span className='absolute bottom-3 left-2 text-white text-sm'>{story.name}</span>
             </div>
