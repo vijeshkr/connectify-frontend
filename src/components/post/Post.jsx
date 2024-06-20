@@ -20,7 +20,7 @@ const Post = ({ post }) => {
     };
 
     return (
-        <div className='shadow-custom bg-white rounded-lg'>
+        <div className='shadow-custom bg-white rounded-lg dark:bg-black dark:text-white'>
             {/* Container div */}
             <div className='p-5'>
                 {/* User div */}
@@ -45,15 +45,15 @@ const Post = ({ post }) => {
                 <div className="flex items-center gap-5 text-sm">
                     <div className='flex gap-2 cursor-pointer'>
                         {liked ? <FavoriteOutlinedIcon className='text-red-600' onClick={ toggleLiked } /> : <FavoriteBorderOutlinedIcon onClick={ toggleLiked } />}
-                        <p>12 Likes</p>
+                        <p className='hidden sm:block'>12 Likes</p>
                     </div>
                     <div className=" flex gap-2 cursor-pointer" onClick={() => setCommentOpen(!commentOpen)}>
                         {<CommentOutlinedIcon />}
-                        <p>14 Comments</p>
+                        <p className='hidden sm:block'>14 Comments</p>
                     </div>
                     <div className="flex gap-2 cursor-pointer">
                         {<ShareOutlinedIcon />}
-                        <p>Share</p>
+                        <p className='hidden sm:block'>Share</p>
                     </div>
                 </div>
                     { commentOpen && <Comments/>}

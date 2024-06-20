@@ -14,17 +14,20 @@ import Home from './pages/home/Home';
 import Profile from './pages/profile/Profile'
 import { useContext } from 'react';
 import { AuthContext } from './context/authContext';
+import { DarkModeContext } from './context/darkModeContext';
 
 function App() {
 
   // Login contextApi
 
   const { currentUser } = useContext(AuthContext);
+  const { darkMode } = useContext(DarkModeContext);
+  let theme = darkMode ? 'dark' : '';
 
   // Layout component to structure the main layout with Navbar, LeftBar, RighBar and dynamic content via Outlet
   const Layout = () =>{
     return(
-      <div className='bg-gray-100'>
+      <div className={`bg-gray-100 ${theme}`}>
         <Navbar/>
         <div className='flex'>
           <LeftBar/>

@@ -9,29 +9,35 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
+import { DarkModeContext } from '../../context/darkModeContext';
 
 const Navbar = () => {
 
   const { currentUser } = useContext(AuthContext);
+  const { toggle , darkMode } = useContext(DarkModeContext);
+
+  const toggleHandle = () => {
+    toggle();
+  }
 
   return (
-    <div className='flex items-center justify-between px-5 py-3 h-14 border-b sticky top-0 bg-white z-10'>
+    <div className='dark:bg-black dark:text-white flex items-center justify-between px-5 py-3 h-14 border-b sticky top-0 bg-white z-10'>
       {/* Leftside of navbar */}
       <div className='flex items-center gap-7'>
         <Link to='/'>
-        <span className='font-bold text-xl text-sky-600'>Connectify</span>
+        <span className='font-bold text-xl text-sky-600 dark:text-white '>Connectify</span>
         </Link>
         <HomeOutlinedIcon/>
-        <Brightness3OutlinedIcon/>
+        {darkMode ? <Brightness3OutlinedIcon onClick={toggleHandle} /> : <Brightness4OutlinedIcon onClick={toggleHandle} /> }
         <WidgetsOutlinedIcon/>
         {/* Container div for search icon and search box */}
         <div className='flex items-center gap-2 border rounded-md p-2'>
           <SearchOutlinedIcon/>
-          <input type="text" placeholder='Search' className='outline-none w-96' />
+          <input type="text" placeholder='Search' className='outline-none w-96 hidden lg:flex bg-transparent' />
         </div>
       </div>
       {/* Rightside of navbar */}
-      <div className='flex items-center gap-7'>
+      <div className='hidden sm:flex items-center gap-7'>
         <PersonOutlineOutlinedIcon/>
         <EmailOutlinedIcon/>
         <NotificationsNoneOutlinedIcon/>

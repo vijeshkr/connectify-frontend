@@ -47,7 +47,7 @@ const posts = [
 ]
 
   return (
-    <div className='flex flex-col gap-12'>
+    <div className='flex flex-col sm:gap-5 gap-3'>
       {posts.map((post) => (
         <Post post={post} key={post.id} />
       ))}

@@ -18,7 +18,7 @@ const LeftBar = () => {
 
   const { currentUser } = useContext(AuthContext);
   return (
-    <div className='flex-2 sticky top-14 h-h-calc overflow-scroll no-scrollbar bg-white '>
+    <div className='hidden md:flex flex-2 sticky top-14 h-h-calc overflow-scroll no-scrollbar bg-white dark:bg-black dark:text-white '>
       {/* Container for the leftbar */}
       <div className='p-5'>
         {/* Section one */}
