@@ -27,8 +27,11 @@ const Navbar = () => {
         <Link to='/'>
         <span className='font-bold text-xl text-sky-600 dark:text-white '>Connectify</span>
         </Link>
+        <Link to='/' >
         <HomeOutlinedIcon/>
-        {darkMode ? <Brightness3OutlinedIcon onClick={toggleHandle} /> : <Brightness4OutlinedIcon onClick={toggleHandle} /> }
+        </Link>
+        {/* Dark or light mode icon */}
+        {darkMode ? <Brightness3OutlinedIcon onClick={toggleHandle} className='cursor-pointer' /> : <Brightness4OutlinedIcon onClick={toggleHandle} className='cursor-pointer' /> }
         <WidgetsOutlinedIcon/>
         {/* Container div for search icon and search box */}
         <div className='flex items-center gap-2 border rounded-md p-2'>

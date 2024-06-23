@@ -12,7 +12,7 @@ const Post = ({ post }) => {
 
     const [commentOpen, setCommentOpen] = useState(false);
 
-    // Temporary
+    // Temporary like unlike hook
     const [liked, setLiked] = useState(false);
 
     const toggleLiked = () => {

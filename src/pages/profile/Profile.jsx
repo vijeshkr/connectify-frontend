@@ -51,8 +51,8 @@ const Profile = () => {
             <button className='bg-blue-600 text-white rounded-md py-1 w-16 sm:text-base text-xs sm:w-24'>follow</button>
            </div>
            <div className='flex-1 flex items-center justify-end gap-3 text-gray-600'>
-            <EmailIcon/>
-            <MoreVertIcon/>
+            <EmailIcon className='cursor-pointer'/>
+            <MoreVertIcon className='cursor-pointer'/>
            </div>
         </div>
         <Posts/>
