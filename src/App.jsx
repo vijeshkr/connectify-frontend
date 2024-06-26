@@ -15,6 +15,8 @@ import Profile from './pages/profile/Profile'
 import { useContext } from 'react';
 import { AuthContext } from './context/authContext';
 import { DarkModeContext } from './context/darkModeContext';
+import { QueryClient, QueryClientProvider } from 'react-query'
+
 
 function App() {
 
@@ -24,9 +26,12 @@ function App() {
   const { darkMode } = useContext(DarkModeContext);
   let theme = darkMode ? 'dark' : '';
 
+  const queryClient = new QueryClient();
+
   // Layout component to structure the main layout with Navbar, LeftBar, RighBar and dynamic content via Outlet
   const Layout = () =>{
     return(
+      <QueryClientProvider client={queryClient}>
       <div className={`bg-gray-100 ${theme}`}>
         <Navbar/>
         <div className='flex'>
@@ -37,6 +42,7 @@ function App() {
           <RightBar/>
         </div>
       </div>
+      </QueryClientProvider>
     );
   };
 

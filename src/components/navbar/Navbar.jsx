@@ -46,7 +46,7 @@ const Navbar = () => {
         <NotificationsNoneOutlinedIcon/>
         {/* Container div for profile image and profile name */}
         <div className='flex items-center gap-3'>
-          <img src={currentUser.profilePic} alt="" className='w-8 h-8 rounded-full object-cover' />
+          <img src={'http://localhost:8800/images/'+currentUser.profilePic} alt="" className='w-8 h-8 rounded-full object-cover' />
           <span>{currentUser.name}</span>
         </div>
       </div>

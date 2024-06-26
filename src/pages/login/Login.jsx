@@ -1,14 +1,31 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/authContext'
 
 // Login component for user authentication
 const Login = () => {
 
-        const { login } = useContext(AuthContext);
+        const navigate = useNavigate();
 
-        const handleLogin = () => {
-            login();
+        const { login } = useContext(AuthContext);
+        const [inputs, setInputs] = useState({
+            username:'',
+            password:''
+        });
+        const [err, setErr] = useState(null);
+
+        const handleChange = (e) => {
+            setInputs((prev) => ({...prev,[e.target.name]:e.target.value}))
+        };
+
+        const handleLogin = async (e) => {
+            e.preventDefault();
+            try {
+               await login(inputs);
+               navigate('/');
+            } catch (err) {
+                setErr(err.response.data);
+            }
         };
 
   return (
@@ -36,8 +53,9 @@ const Login = () => {
                 <h1 className='font-semibold sm:hidden text-sky-600 opacity-80 text-2xl sm:text-3xl'>Connectify</h1>
                 {/* Login form */}
                 <form className='flex flex-col gap-4 sm:gap-7 items-start' >
-                    <input type="text" placeholder='Username' className='border-b py-2 px-2 w-full outline-none'/>
-                    <input type="password" placeholder='Password' className='border-b py-2 px-2 w-full outline-none' />
+                    <input name='username' onChange={handleChange} type="text" placeholder='Username' className='border-b py-2 px-2 w-full outline-none'/>
+                    <input name='password' onChange={handleChange} type="password" placeholder='Password' className='border-b py-2 px-2 w-full outline-none' />
+                    {err && err}
                     <button onClick={handleLogin} className='text-base w-full sm:w-1/2 py-2 hover:border hover:border-sky-600 bg-sky-600 text-white hover:bg-white hover:text-sky-600 transition rounded-md font-bold cursor-pointer'>Login</button>
                 </form>
             </div>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 
@@ -10,12 +11,12 @@ export const AuthContextProvider = ({ children }) => {
         JSON.parse(localStorage.getItem('user')) || null
     );
 
-    const login = () => {
-        setCurrentUser({
-            id:1,
-            name:'Vijesh KR',
-            profilePic:'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg',
-        })
+    const login = async (inputs) => {
+        const res = await axios.post('http://localhost:8800/api/auth/login',inputs,{
+            withCredentials:true,
+        });
+        
+        setCurrentUser(res.data);
     };
     // Hook to update local storage whenever the current user changes
     useEffect(() => {
@@ -23,7 +24,7 @@ export const AuthContextProvider = ({ children }) => {
     },[currentUser]);
 
     return (
-        <AuthContext.Provider value={{ currentUser, login}}>
+        <AuthContext.Provider value={{ currentUser, login, setCurrentUser}}>
             {children}
         </AuthContext.Provider>
     );

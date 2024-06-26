@@ -1,8 +1,34 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 // Register component for user registration
 const Register = () => {
+
+    const [inputs,setInputs] = useState({
+        username:'',
+        email:'',
+        password:'',
+        name:'',
+    });
+
+    const [err,setErr] = useState(null);
+
+    const navigate = useNavigate();
+
+    const handleChange = (e) => {
+        setInputs((prev) => ({...prev,[e.target.name]:e.target.value}))
+    };
+    const handleClick = async (e) => {
+        e.preventDefault();
+
+        try{
+            await axios.post('http://localhost:8800/api/auth/register',inputs);
+            navigate('/login');
+        }catch(err){
+            setErr(err.response.data);
+        }
+    }
     return (
         <div className='h-screen bg-sky-300 flex items-center justify-center p-7 sm:p-4'>
             {/* Registration card container, uses flex row reverse to reverse the left side and right side of the registration card */}
@@ -30,11 +56,12 @@ const Register = () => {
                     <h1 className='font-semibold sm:hidden text-sky-600 opacity-80 text-2xl sm:text-3xl'>Connectify</h1>
                     {/* Registration form */}
                     <form className='flex flex-col gap-4 sm:gap-7 items-start' >
-                        <input type="text" placeholder='Username' className='border-b py-2 px-2 w-full outline-none' />
-                        <input type="email" placeholder='Email' className='border-b py-2 px-2 w-full outline-none' />
-                        <input type="password" placeholder='Password' className='border-b py-2 px-2 w-full outline-none' />
-                        <input type="text" placeholder='Confirm Password' className='border-b py-2 px-2 w-full outline-none' />
-                        <button className='text-base w-full sm:w-1/2 py-2 hover:border hover:border-sky-600 bg-sky-600 text-white hover:bg-white hover:text-sky-600 transition rounded-md font-bold cursor-pointer'>Register</button>
+                        <input name='username' onChange={handleChange} type="text" placeholder='Username' className='border-b py-2 px-2 w-full outline-none' />
+                        <input name='email' onChange={handleChange} type="email" placeholder='Email' className='border-b py-2 px-2 w-full outline-none' />
+                        <input name='password' onChange={handleChange} type="password" placeholder='Password' className='border-b py-2 px-2 w-full outline-none' />
+                        <input name='name' onChange={handleChange} type="text" placeholder='Name' className='border-b py-2 px-2 w-full outline-none' />
+                        { err && err}
+                        <button onClick={handleClick} className='text-base w-full sm:w-1/2 py-2 hover:border hover:border-sky-600 bg-sky-600 text-white hover:bg-white hover:text-sky-600 transition rounded-md font-bold cursor-pointer'>Register</button>
                     </form>
                 </div>
             </div>
