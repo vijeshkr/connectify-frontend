@@ -85,7 +85,7 @@ const Profile = () => {
               <div className='flex-1 flex flex-col gap-3 items-center'>
                 <span className='font-medium lg:text-2xl text-xl pt-8 text-center'>{data.name}</span>
                 {/* Container div */}
-                <div className='flex w-full items-center justify-around text-gray-600'>
+                <div className='flex w-full items-center justify-around text-gray-600 gap-2'>
                   <div className='hidden lg:flex gap-1'>
                     <PlaceIcon fontSize='small' />
                     <span className='text-xs'>{data.city}</span>

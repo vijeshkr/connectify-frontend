@@ -55,7 +55,7 @@ const Login = () => {
                 <form className='flex flex-col gap-4 sm:gap-7 items-start' >
                     <input name='username' onChange={handleChange} type="text" placeholder='Username' className='border-b py-2 px-2 w-full outline-none'/>
                     <input name='password' onChange={handleChange} type="password" placeholder='Password' className='border-b py-2 px-2 w-full outline-none' />
-                    {err && err}
+                    { err && <p className='text-sm text-red-600'>{err}</p>}
                     <button onClick={handleLogin} className='text-base w-full sm:w-1/2 py-2 hover:border hover:border-sky-600 bg-sky-600 text-white hover:bg-white hover:text-sky-600 transition rounded-md font-bold cursor-pointer'>Login</button>
                 </form>
             </div>

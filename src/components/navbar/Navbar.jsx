@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Brightness3OutlinedIcon from '@mui/icons-material/Brightness3Outlined';
 import Brightness4OutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
@@ -7,14 +7,38 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
 import { DarkModeContext } from '../../context/darkModeContext';
+import axios from 'axios';
 
 const Navbar = () => {
 
   const { currentUser } = useContext(AuthContext);
   const { toggle , darkMode } = useContext(DarkModeContext);
+
+  const navigate = useNavigate();
+
+  // Logout show
+  const [ openLogout, setOpenLogout ] = useState(false);
+
+  // Logout toggle
+  const logoutToggle = () => {
+    setOpenLogout(!openLogout);
+  }
+
+  // Logoutfunction
+  
+  const handleLogout = async () => {
+    try {
+        const response = await axios.post('http://localhost:8800/api/auth/logout');
+        console.log(response.data); 
+    } catch (error) {
+        console.error('Logout failed:', error);
+    }
+    localStorage.removeItem('user');
+    navigate('/login');
+};
 
   const toggleHandle = () => {
     toggle();
@@ -45,9 +69,10 @@ const Navbar = () => {
         <EmailOutlinedIcon/>
         <NotificationsNoneOutlinedIcon/>
         {/* Container div for profile image and profile name */}
-        <div className='flex items-center gap-3'>
+        <div className='flex items-center gap-3 relative'>
           <img src={'http://localhost:8800/images/'+currentUser.profilePic} alt="" className='w-8 h-8 rounded-full object-cover' />
-          <span>{currentUser.name}</span>
+          <span className='cursor-pointer' onClick={logoutToggle}>{currentUser.name}</span>
+          {openLogout && <button onClick={handleLogout} className='bg-red-600 text-xs px-2 py-1 text-white rounded-md absolute right-0 top-12 shadow-custom' >Logout</button>}
         </div>
       </div>
     </div>

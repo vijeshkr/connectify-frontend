@@ -98,7 +98,7 @@ const Update = ({ setOpenUpdate, user }) => {
             <label htmlFor="profile" className='flex flex-col gap-2 text-gray-600 text-sm'>
               <span className='mx-5'>Profile Picture</span>
               <div className='relative'>
-                <img className='mx-5 w-24 h-24 object-cover' src={cover ? URL.createObjectURL(profile) :
+                <img className='mx-5 w-24 h-24 object-cover' src={profile ? URL.createObjectURL(profile) :
                   'http://localhost:8800/images/'+user.profilePic
                 } alt="" />
                 <CloudUploadIcon className='absolute top-0 bottom-0 left-0 right-0 m-auto text-3xl text-gray-400 cursor-pointer' />

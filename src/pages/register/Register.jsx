@@ -60,7 +60,7 @@ const Register = () => {
                         <input name='email' onChange={handleChange} type="email" placeholder='Email' className='border-b py-2 px-2 w-full outline-none' />
                         <input name='password' onChange={handleChange} type="password" placeholder='Password' className='border-b py-2 px-2 w-full outline-none' />
                         <input name='name' onChange={handleChange} type="text" placeholder='Name' className='border-b py-2 px-2 w-full outline-none' />
-                        { err && err}
+                        { err && <p className='text-sm text-red-600'>{err}</p>}
                         <button onClick={handleClick} className='text-base w-full sm:w-1/2 py-2 hover:border hover:border-sky-600 bg-sky-600 text-white hover:bg-white hover:text-sky-600 transition rounded-md font-bold cursor-pointer'>Register</button>
                     </form>
                 </div>

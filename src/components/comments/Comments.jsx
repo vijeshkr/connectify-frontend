@@ -36,7 +36,7 @@ const Comments = ({ postId }) => {
     <div>
         {/* Write a comment section */}
         <div className='flex items-center justify-between gap-5 mt-3'>
-            <img className='w-10 h-10 rounded-full object-cover' src={currentUser.profilePic} alt="" />
+            <img className='w-10 h-10 rounded-full object-cover' src={'http://localhost:8800/images/'+currentUser.profilePic} alt="" />
             <input onChange={e=>setDesc(e.target.value)} value={desc} className='w-full p-2 border rounded-md outline-blue-600 bg-transparent' type="text" placeholder='write a comment' />
                 <button onClick={handleClick} className='bg-blue-600 text-white px-4 py-2 rounded-md text-sm' >Send</button>
         </div>
@@ -44,7 +44,7 @@ const Comments = ({ postId }) => {
         {error ? 'Something went wrong' : isLoading ? 'Loading' : data.map((comment) => (
             <div key={comment.id} className='my-7 flex justify-between gap-5'>
                 {/* Commentator profile picture */}
-                <img src={comment.profilePic} alt="" className='w-10 h-10 rounded-full object-cover' />
+                <img src={'http://localhost:8800/images/'+comment.profilePic} alt="" className='w-10 h-10 rounded-full object-cover' />
                 {/* Comment and user name */}
                 <div className='flex flex-col gap-1 flex-6'>
                     <Link to={`/profile/${comment.userId}`}>
